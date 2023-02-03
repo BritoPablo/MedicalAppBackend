@@ -220,12 +220,16 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticatedOrReadOnly'
     ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
 }
 
 
 AUTH_USER_MODEL = 'user.UserAccount'  #ADDED to point to model user in models.py of user app
 
-CORS_ORIGIN_WHITELIST = env.list('CORS_ORIGIN_WHITELIST_DEV')
+CORS_ORIGIN_WHITELIST = ['http://127.0.0.1:5173'] 
+##env.list('CORS_ORIGIN_WHITELIST_DEV')
 
 CSRF_TRUSTED_ORIGIN = env.list('CSRF_TRUSTED_ORIGIN_DEV')
 
